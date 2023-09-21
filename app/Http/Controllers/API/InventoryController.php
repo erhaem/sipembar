@@ -57,12 +57,12 @@ class InventoryController extends Controller
                 ...$data
             ], 200);
         } catch (Exception $e) {
-            // return response()->json([
-            //     'status' => 'failed',
-            //     'error_message' => 'Failed to insert data'
-            // ], 500);
+            return response()->json([
+                'status' => 'failed',
+                'error_message' => 'Failed to insert data'
+            ], 500);
 
-            dd($e);
+            // dd($e);
         }
     }
 

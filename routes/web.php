@@ -34,6 +34,9 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
 
     Route::get('/superadmin/students/add',
         [SuperAdminController::class, 'addStudent'])->name('superadmin.students_add');
+
+    Route::post('/superadmin/students/add',
+        [SuperAdminController::class, 'createStudent'])->name('superadmin.students_add.submit');
 });
 
 Route::middleware('guest')->group(function() {

@@ -29,7 +29,9 @@
         <div class="col-md-12 col-12 mt-6">
           <div class="card">
             <div class="card-body">
-              <form action="#" method="POST" class="p-5">
+              @include('dashui.commons.alert')
+              <form action="{{ route('superadmin.students_add.submit') }}" method="POST" class="p-5">
+                @csrf
                 <div class="form-group row mb-4">
                   <label class="col-sm-3 col-form-label">
                     Name
@@ -52,22 +54,37 @@
                   <label class="col-sm-3 col-form-label">Username</label>
                   <div class="col-sm-9">
                     <input type="text" name="username" class="form-control" maxlength="30" required=""
-                      autocomplete="off">
+                      autocomplete="off" placeholder="haidarrr">
                   </div>
                 </div>
 
                 <div class="form-group row mb-4">
                   <label class="col-sm-3 col-form-label">Email</label>
                   <div class="col-sm-9">
-                    <input type="email" name="email" class="form-control" maxlength="50" required="">
+                    <input type="email" name="email" class="form-control" maxlength="50" required=""
+                      placeholder="haidar@live.com">
                   </div>
                 </div>
 
                 <div class="form-group row mb-4">
                   <label class="col-sm-3 col-form-label">Password</label>
                   <div class="col-sm-9">
-                    <input type="password" name="password" class="form-control" maxlength="50" required="">
+                    <input type="password" name="password" class="form-control" maxlength="50" required=""
+                      placeholder="********">
                   </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                  <label class="col-sm-3 col-form-label">Class</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="class" class="form-control" maxlength="10" required="" autocomplete="off"
+                      placeholder="D3TI">
+                  </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end mt-3">
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
