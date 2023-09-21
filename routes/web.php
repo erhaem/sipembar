@@ -37,6 +37,9 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
 
     Route::post('/superadmin/students/add',
         [SuperAdminController::class, 'createStudent'])->name('superadmin.students_add.submit');
+
+    Route::delete('/students/{id}', [SuperAdminController::class, 'deleteStudent'])->name('superadmin.students.delete');
+
 });
 
 Route::middleware('guest')->group(function() {

@@ -58,9 +58,16 @@
                         <a class="btn btn-icon btn-xs rounded-circle bg-warning text-light" href="#!" role="button">
                           <i data-feather="edit" class="icon-xs"></i>
                         </a>
-                        <a class="btn btn-icon btn-xs rounded-circle bg-danger text-light" href="#!" role="button">
+                        <button type="button" class="btn btn-icon btn-xs rounded-circle bg-danger text-light"
+                          onclick="confirmDelete('{{ $user->id }}')">
                           <i data-feather="trash" class="icon-xs"></i>
-                        </a>
+                        </button>
+                        <form id="delete-form-{{ $user->id }}"
+                          action="{{ route('superadmin.students.delete', ['id' => $user->id]) }}" method="POST"
+                          style="display: none;">
+                          @csrf
+                          @method('DELETE')
+                        </form>
                       </td>
                     </tr>
                     @endforeach
@@ -77,3 +84,16 @@
     </div>
   </div>
   @endsection
+
+  <script>
+    function confirmDelete(studentId) {
+        const confirmed = confirm("Are you sure you want to delete this student?");
+
+        if (confirmed) {
+            const form = document.getElementById(`delete-form-${studentId}`);
+            if (form) {
+                form.submit();
+            }
+        }
+    }
+  </script>

@@ -100,8 +100,29 @@ class SuperAdminController extends Controller
 
             return redirect()->back()->with('success', 'Student successfully added');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Student failed to be added');
+            return redirect()->back()->with('error', 'failed to add student');
         }
     }
+
+    /**
+     * Deletes student
+     */
+    public function deleteStudent($id) {
+        $student = Student::find($id);
+
+        if (!$student) {
+            return redirect()->back()->with('error', 'Student not found');
+        }
+
+        try {
+            $student->delete();
+            return redirect()->back()->with('success', 'Student deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete student');
+        }
+    }
+
+
+
 
 }
